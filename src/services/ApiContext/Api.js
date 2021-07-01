@@ -11,7 +11,8 @@ export const ApiProvider = ({ children }) => {
     const token = 'BQCpOfEygqqrSD8-cphfc9Cwd0iyPOEuzxx-KA02pFfh_U6IWmrLOwTTdSMMuKQgn9WgKQKFurEL62jgIhxGhcKeiocc5g5wXgVzmLxBS0EQdkVwjdJ_xbFe2ggNRQA9FdzRHuTgEvgu0Tlgft6nIJMrJXSE4jo';
     const type = 'track';
 
-    const fetchTracks = async () => {
+    const fetchTracks = async (e) => {
+        e.preventDefault();
         try {
             const response = await axios.get(`${url}${query}&type=${type}`, {
                 headers: { Authorization: 'Bearer ' + token },

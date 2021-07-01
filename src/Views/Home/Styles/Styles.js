@@ -20,6 +20,9 @@ export const useStyle = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
     },
     card: {
+        backgroundColor: '#1DB954',
+        color: '#fff',
+        fontWeight: 'bold',
         padding: theme.spacing(2),
         margin: theme.spacing(1, 1, 1, 1),
         height: 'fit-content',

@@ -17,12 +17,12 @@ export const Home = () => {
     };
     return (
         <main>
-            <article className={classes.inputContainer}>
+            <form onSubmit={(e) => fetchTracks(e)} className={classes.inputContainer}>
                 <TextField placeholder='search...' value={query} onChange={handleChange} variant='outlined' className={classes.input} />
-                <Button onClick={() => fetchTracks()} startIcon={<SearchIcon />} size='large' className={classes.button}>
+                <Button type='submit' startIcon={<SearchIcon />} size='large' className={classes.button}>
                     Search
                 </Button>
-            </article>
+            </form>
 
             <section>
                 <article>
