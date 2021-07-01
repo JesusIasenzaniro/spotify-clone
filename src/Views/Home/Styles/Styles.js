@@ -16,4 +16,13 @@ export const useStyle = makeStyles((theme) => ({
             backgroundColor: '#1DB954',
         },
     },
+    cardContainer: {
+        marginTop: theme.spacing(5),
+    },
+    card: {
+        padding: theme.spacing(2),
+        margin: theme.spacing(1, 1, 1, 1),
+        height: 'fit-content',
+        width: '300px',
+    },
 }));
