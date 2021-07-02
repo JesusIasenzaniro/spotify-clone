@@ -5,29 +5,30 @@ const ApiContext = React.createContext();
 
 export const ApiProvider = ({ children }) => {
     const [query, setQuery] = useState('');
-    const [tracks, setTracks] = useState([]);
+    const [data, setData] = useState([]);
 
     const url = `https://api.spotify.com/v1/search?q=`;
-    const token = 'BQD1cA_kWlRPFV60XTyHIRo-h0-FsiViL5nymnhCXk5KXa9ByPLHU1suODVO0qHljhW2qFrtOS7-SE05moakq3-bfPIECa9PSKG4bBNQJT-u3MY5sZjfhS6raFy__-746xfxNaB_oILbO736z59SX1QCm88qH2w';
-    const type = 'track';
+    const token = 'BQCXpMXiHVpXytX2GtQ075F_Ah1pCkzQ66zyvANChVXaVZBOHdHwlwiHsu2N_cPMxeM1vCJtYlYDOtwM2Dni_NLZijNtkJ4SWnjm6q4n1nMX_y_QWPHyXm44Dr0j1mLMJStmZxBT8V7BBv6H2Tcd9UtDtfZsXMk';
+    const type = 'track%2Cartist%2Calbum';
+    const limit = 5;
 
-    const fetchTracks = async (e) => {
+    const fetchData = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.get(`${url}${query}&type=${type}`, {
+            const response = await axios.get(`${url}${query}&type=${type}&limit=${limit}`, {
                 headers: { Authorization: 'Bearer ' + token },
             });
-            setTracks(response.data.tracks);
+            setData(response.data);
         } catch (e) {
             console.log(e);
-            alert('Track not found');
+            alert('Data not found');
         }
     };
     useEffect(() => {
-        console.log('Tracks updated');
-    }, [tracks]);
+        console.log('data updated');
+    }, [data]);
 
-    return <ApiContext.Provider value={{ query, setQuery, tracks, fetchTracks }}>{children}</ApiContext.Provider>;
+    return <ApiContext.Provider value={{ query, setQuery, data, fetchData }}>{children}</ApiContext.Provider>;
 };
 
 export const useApiContext = () => {
