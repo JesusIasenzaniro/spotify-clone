@@ -1,6 +1,7 @@
 import { Paper, Grid } from '@material-ui/core';
 import { useStyle } from '../Styles/Styles';
 import { useApiContext } from '../../../services/ApiContext/Api';
+import { Link } from 'react-router-dom';
 import Card from './Card';
 
 const CardContainer = () => {
@@ -20,7 +21,13 @@ const CardContainer = () => {
                     {data.albums && (
                         <Grid container justify='center' className={classes.cardContainer}>
                             {data.albums.items.map((item, index) => {
-                                return <Card key={item.id} item={item} index={index} />;
+                                return (
+                                    <article key={item.id}>
+                                        <Link to={`/${item.id}`}>
+                                            <Card item={item} index={index} />
+                                        </Link>
+                                    </article>
+                                );
                             })}
                         </Grid>
                     )}
